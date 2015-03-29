@@ -1,3 +1,5 @@
 Template.findPlayers.helpers
-  friends: ->
-    return RiddleBomb.getFriendPlayers()
+  facebookFriends: ->
+    return RiddleBomb.getFacebookFriends()
+  playerByFacebookUser: (facebookUser=@) ->
+    return RiddleBomb.getUserByFacebookUser facebookUser

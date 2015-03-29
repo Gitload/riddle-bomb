@@ -1,18 +1,19 @@
+fbFriendsDependency = new Tracker.Dependency;
+
 @RiddleBomb =
   getUserByFacebookId: (facebookId) ->
-    return Meteor.users.find({"services.facebook.id" : facebookId})
+    return Meteor.users.findOne(
+      "services.facebook.id" : facebookId,
+      {
+        transform : (doc) ->
+          doc.name = doc.services.facebook.name
+          console.log(doc)
+          return doc
+      }
+    )
 
-  getUsersByFacebookCollection: (facebookCollection) ->
-    users = []
-    console.log(facebookCollection)
-    for friend in facebookCollection
-      console.log(friend)
-      users.push friend.name
-    return users
+  getUserByFacebookUser: (facebookUser) ->
+    return @getUserByFacebookId facebookUser.id
 
-  getFriendPlayers: ->
-    console.log('get friends');
-    return FacebookCollections.getFriends('me')
-    return @getUsersByFacebookCollection(facebookCollection)
-
-
+  getFacebookFriends: ->
+    return FacebookCollections.getFriends('me').find {}
