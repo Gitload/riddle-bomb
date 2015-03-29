@@ -26,7 +26,7 @@ Schemas.Entries = new SimpleSchema
     type: Number
 
   "draws.$.userId":
-    type: Number
+    type: String
 
   "draws.$.userInput":
     type: String

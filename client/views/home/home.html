@@ -1,28 +1,3 @@
 <template name="home">
-<div>
-    <section id="intro" class="colored text-center">
-        <header>
-            <nav class="navbar navbar-default" role="navigation">
-                <div class="container">
-                    <div class="container">
-                        <a class="navbar-brand" href="{{pathFor 'home'}}">{{Config.name}}</a>
-                        <div id="main-nav" class="navbar-collapse">
-                            <ul class="social-links">
-                                {{#unless currentUser}}
-                                <a id="home-login" href="{{pathFor 'entrySignIn'}}"><li>Login</li></a>
-                                {{/unless}}
-                                {{#each socialMedia}}
-                                <a href="{{url}}" target="_blank"><li class="fa fa-{{icon}}"></li></a>
-                                {{/each}}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </header>
-    </section>
-    <div id="content">
-
-    </div>
-</div>
+    Welcome to {{{Config.logo}}}
 </template>
