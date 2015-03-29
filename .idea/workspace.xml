@@ -9,11 +9,8 @@
       <change type="DELETED" beforePath="C:\Development\Meteor\riddle-bomb\.meteor\platforms" afterPath="" />
       <change type="DELETED" beforePath="C:\Development\Meteor\riddle-bomb\.meteor\release" afterPath="" />
       <change type="DELETED" beforePath="C:\Development\Meteor\riddle-bomb\.meteor\versions" afterPath="" />
-      <change type="DELETED" beforePath="C:\Development\Meteor\riddle-bomb\client\layouts\home_layout\home_layout.html" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/both/_config/accounts.coffee" afterPath="$PROJECT_DIR$/both/_config/accounts.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/dashboard/dashboard.html" afterPath="$PROJECT_DIR$/client/views/dashboard/dashboard.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/both/collections/games.coffee" afterPath="$PROJECT_DIR$/both/collections/games.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/home/home.coffee" afterPath="$PROJECT_DIR$/client/views/home/home.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/home/home.html" afterPath="$PROJECT_DIR$/client/views/home/home.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/both/router.coffee" afterPath="$PROJECT_DIR$/both/router.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -38,28 +35,57 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="navbar.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/shared/navbar.html">
+      <file leaf-file-name="accounts.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/both/_config/accounts.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="120" selection-start="464" selection-end="481" vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="969">
+            <state line="8" column="29" selection-start="166" selection-end="166" vertical-scroll-proportion="-5.44" vertical-offset="0" max-vertical-offset="459">
+              <folding>
+                <marker date="1427646964656" expanded="true" signature="117:200" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="findplayers.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/views/findPlayers/findplayers.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="7" selection-start="36" selection-end="36" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="136">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="master_layout.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/layouts/master_layout/master_layout.html">
+      <file leaf-file-name="RiddleBomb.coffee" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/both/RiddleBomb.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="11" selection-start="100" selection-end="100" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="289">
+            <state line="0" column="11" selection-start="0" selection-end="11" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="565">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adminConfig.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/both/_config/adminConfig.coffee">
+      <file leaf-file-name="app.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/both/app.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="0" selection-start="172" selection-end="239" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="833">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="emails.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/both/_config/emails.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="11" selection-start="215" selection-end="215" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="findplayers.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/views/findPlayers/findplayers.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="25" selection-start="100" selection-end="100" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="204">
               <folding />
             </state>
           </provider>
@@ -68,61 +94,34 @@
       <file leaf-file-name="router.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/both/router.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="338" selection-end="338" vertical-scroll-proportion="-3.84" vertical-offset="125" max-vertical-offset="1649">
+            <state line="32" column="13" selection-start="808" selection-end="808" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1598">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/views/home/home.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="29" selection-start="48" selection-end="52" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="136">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dashboard.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="dashboard.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/views/dashboard/dashboard.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="22" selection-start="69" selection-end="69" vertical-scroll-proportion="0.06614786" vertical-offset="0" max-vertical-offset="514">
+            <state line="2" column="57" selection-start="104" selection-end="104" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="170">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/index.html">
+      <file leaf-file-name="dashboard.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/views/dashboard/dashboard.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="7" selection-start="138" selection-end="138" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="204">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="153">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/views/home/home.coffee">
+      <file leaf-file-name="account.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/views/account/account.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.less" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/views/home/home.less">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="1" selection-start="194" selection-end="194" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="255">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="games.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/both/collections/games.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="10" selection-start="397" selection-end="397" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="663">
+            <state line="18" column="0" selection-start="473" selection-end="527" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
               <folding />
             </state>
           </provider>
@@ -149,10 +148,19 @@
         <option value="$PROJECT_DIR$/both/collections/questions.coffee" />
         <option value="$PROJECT_DIR$/both/_config/adminConfig.coffee" />
         <option value="$PROJECT_DIR$/both/collections/games.coffee" />
-        <option value="$PROJECT_DIR$/both/router.coffee" />
         <option value="$PROJECT_DIR$/client/views/home/home.coffee" />
         <option value="$PROJECT_DIR$/client/views/home/home.html" />
+        <option value="$PROJECT_DIR$/client/views/findplayers/dashboard.html" />
+        <option value="$PROJECT_DIR$/server/publish/user.coffee" />
+        <option value="$PROJECT_DIR$/server/methods/account.coffee" />
+        <option value="$PROJECT_DIR$/both/_config/accounts.coffee" />
+        <option value="$PROJECT_DIR$/client/views/findplayers/dashboard.coffee" />
+        <option value="$PROJECT_DIR$/client/views/findPlayers/dashboard.coffee" />
+        <option value="$PROJECT_DIR$/both/router.coffee" />
         <option value="$PROJECT_DIR$/client/views/dashboard/dashboard.html" />
+        <option value="$PROJECT_DIR$/client/views/findPlayers/findplayers.html" />
+        <option value="$PROJECT_DIR$/both/RiddleBomb.coffee" />
+        <option value="$PROJECT_DIR$/client/views/findPlayers/findplayers.coffee" />
       </list>
     </option>
   </component>
@@ -250,6 +258,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="methods" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="riddle-bomb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="riddle-bomb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -283,6 +309,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="riddle-bomb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="riddle-bomb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="findPlayers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -343,13 +391,14 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../suspect" />
-    <property name="options.lastSelected" value="preferences.intentionPowerPack" />
+    <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Development\Meteor\riddle-bomb\client\views" />
       <recent name="C:\Development\Meteor\riddle-bomb\both\collections" />
     </key>
   </component>
@@ -370,6 +419,23 @@
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="65c58f98-01f1-41d2-9a5b-c392c963da2f" name="Default" comment="" />
@@ -421,55 +487,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/dashboard/dashboard.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="586">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/account/account.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="565">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/libraries/wow.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="552">
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/libraries/skrollr.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="552">
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/tracker.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="565">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/profile/profile.coffee">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="586">
@@ -522,13 +539,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/both/app.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="565">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/both/collections/attachments.coffee">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="11" selection-start="58" selection-end="58" vertical-scroll-proportion="-0.68" vertical-offset="0" max-vertical-offset="340">
@@ -537,27 +547,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/both/collections/_schemas.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="565">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/both/collections/profile_pictures.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="552">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/both/_config/emails.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="565">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/both/_config/accounts.coffee">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="565">
           <folding />
@@ -645,7 +634,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="565">
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -685,13 +674,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/both/collections/users.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="419" selection-end="432" vertical-scroll-proportion="-7.88" vertical-offset="262" max-vertical-offset="5100">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/both/collections/posts.coffee">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="0" selection-start="311" selection-end="392" vertical-scroll-proportion="-4.48" vertical-offset="279" max-vertical-offset="850">
@@ -716,20 +698,6 @@
     <entry file="file://$PROJECT_DIR$/both/collections/games.coffee">
       <provider selected="true" editor-type-id="text-editor">
         <state line="30" column="10" selection-start="397" selection-end="397" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="663">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/layouts/master_layout/master_layout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="11" selection-start="100" selection-end="100" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="289">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/both/router.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="338" selection-end="338" vertical-scroll-proportion="-3.84" vertical-offset="125" max-vertical-offset="1649">
           <folding />
         </state>
       </provider>
@@ -769,9 +737,116 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/layouts/master_layout/master_layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="31" selection-start="185" selection-end="185" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="289">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="923" column="18" selection-start="0" selection-end="73302" vertical-scroll-proportion="0.33274338" vertical-offset="15503" max-vertical-offset="64821">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/both/collections/profile_pictures.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="552">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/publish/user.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="57" selection-end="57" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/methods/account.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="38" selection-start="155" selection-end="155" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/both/collections/users.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="265" column="12" selection-start="4499" selection-end="4499" vertical-scroll-proportion="-8.0" vertical-offset="4305" max-vertical-offset="5100">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/both/_config/accounts.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="29" selection-start="166" selection-end="166" vertical-scroll-proportion="-5.44" vertical-offset="0" max-vertical-offset="459">
+          <folding>
+            <marker date="1427646964656" expanded="true" signature="117:200" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/account/account.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="0" selection-start="473" selection-end="527" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/dashboard/dashboard.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="565">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/dashboard/dashboard.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="22" selection-start="69" selection-end="69" vertical-scroll-proportion="0.06614786" vertical-offset="0" max-vertical-offset="514">
+        <state line="2" column="57" selection-start="104" selection-end="104" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="170">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/findPlayers/findplayers.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="25" selection-start="100" selection-end="100" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="204">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/both/_config/emails.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="11" selection-start="215" selection-end="215" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/both/app.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="565">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/both/router.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="13" selection-start="808" selection-end="808" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1598">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/findPlayers/findplayers.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="7" selection-start="36" selection-end="36" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="136">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/both/RiddleBomb.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="11" selection-start="0" selection-end="11" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
           <folding />
         </state>
       </provider>

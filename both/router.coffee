@@ -15,10 +15,6 @@ Router.map ->
     path: "/dashboard"
     waitOn: ->
       [
-        Meteor.subscribe 'posts'
-        Meteor.subscribe 'favorites'
-        Meteor.subscribe 'comments'
-        Meteor.subscribe 'attachments'
       ]
     onBeforeAction: ->
       url = Session.get 'redirectToAfterSignIn'
@@ -42,7 +38,8 @@ Router.map ->
       if not Config.username or (Meteor.userId() and Meteor.user().username)
         @redirect '/dashboard'
       @next()
-
+  @route "findPlayers",
+    path: "findplayers"
 
 Router.waitOn ->
   Meteor.subscribe 'user'
