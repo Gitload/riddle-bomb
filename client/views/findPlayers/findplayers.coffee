@@ -1,5 +1,9 @@
 Template.findPlayers.helpers
   facebookFriends: ->
-    return RiddleBomb.getFacebookFriends()
-  playerByFacebookUser: (facebookUser=@) ->
-    return RiddleBomb.getUserByFacebookUser facebookUser
+    return RiddleBomb.getUsersByFacebookFriends()
+
+Template.player.events
+  'click .start-game' : ->
+    RiddleBomb.createNewGame(
+      invitee: @
+    )

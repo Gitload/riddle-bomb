@@ -44,6 +44,8 @@ Router.map ->
 Router.waitOn ->
   Meteor.subscribe 'user'
   Meteor.subscribe 'userPicture'
+  Meteor.subscribe 'questions'
+  Meteor.subscribe 'games'
 
 
 prepareView = ->

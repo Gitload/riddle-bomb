@@ -1,11 +1,13 @@
 <template name="findPlayers">
 	<div class="container">
 		{{#each facebookFriends}}
-            {{> player player=playerByFacebookUser}}
+            {{> player}}
         {{/each}}
 	</div>
 </template>
 
 <template name="player">
-    {{this.name}}
+    <a class="start-game">
+        {{profile.firstName}} {{profile.lastName}}
+    </a>
 </template>
