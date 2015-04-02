@@ -4,6 +4,5 @@ Template.findPlayers.helpers
 
 Template.player.events
   'click .start-game' : ->
-    RiddleBomb.createNewGame(
+    RiddleBomb.createNewGame
       invitee: @
-    )

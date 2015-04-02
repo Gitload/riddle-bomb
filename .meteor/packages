@@ -5,10 +5,7 @@
 # but you can also edit it by hand.
 
 meteor-platform
-
-
 insecure
-
 coffeescript
 less
 accounts-base
@@ -44,7 +41,6 @@ accounts-google
 accounts-twitter
 bootstrap
 accounts-ui
-
 jparker:gravatar
 yogiben:autoform-tags
 maxkferg:facebook-collections
