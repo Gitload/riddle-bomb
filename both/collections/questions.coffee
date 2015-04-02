@@ -5,8 +5,11 @@ Schemas.Entries = new SimpleSchema
     type:String
     max: 60
 
-  "answers.$.options":
+  "answers":
     type: [String]
+
+  "answers.$":
+    type: String
     autoform:
       type: 'tags'
 

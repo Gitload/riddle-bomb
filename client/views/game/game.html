@@ -1,0 +1,9 @@
+<template name="game">
+    Game is running!
+    {{#if isPendingGame}}
+        Spiel hat noch nicht begonnen.
+        {{#if isInvitedUser}}
+            <button class="accept-invitation btn btn-default">Einladung akzeptieren</button>
+        {{/if}}
+    {{/if}}
+</template>

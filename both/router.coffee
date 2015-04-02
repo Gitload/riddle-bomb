@@ -6,13 +6,17 @@ Router.configure
   onBeforeAction: ->
     if Config.username and Meteor.userId() and not Meteor.user().username
       @redirect '/setUserName'
+    if Meteor.userId()
+      runningGames = RiddleBomb.getRunningGamesForUser()
+      #if runningGames.count() > 0
+        #Router.go 'game', runningGames.fetch()[0]
     @next()
 
 Router.map ->
   @route "home",
     path: "/"
+
   @route "dashboard",
-    path: "/dashboard"
     waitOn: ->
       [
       ]
@@ -24,22 +28,27 @@ Router.map ->
       @next()
     data: ->
       Posts: Posts.find({},{sort: {createdAt: -1}}).fetch()
+
   @route "profile",
-    path: "/profile"
     waitOn: ->
       Meteor.subscribe 'profilePictures'
+
   @route "account",
-    path: "/account"
     onStop: ->
       Alert.clear()
+
   @route "setUserName",
-    path: "/setUserName"
     onBeforeAction: ->
       if not Config.username or (Meteor.userId() and Meteor.user().username)
         @redirect '/dashboard'
       @next()
-  @route "findPlayers",
-    path: "findplayers"
+
+  @route "findPlayers"
+
+  @route "game/:_id",
+    name: "game"
+    data: () ->
+      Games.findOne(this.params._id)
 
 Router.waitOn ->
   Meteor.subscribe 'user'

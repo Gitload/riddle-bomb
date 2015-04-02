@@ -13,6 +13,11 @@ Schemas.Entries = new SimpleSchema
       label: "User"
       options: getUserOptions
 
+  "adminUserId":
+    type: String
+    autoform:
+      label: "Admin"
+      options: getUserOptions
 
   "questionIds":
     type: [String]
@@ -25,8 +30,7 @@ Schemas.Entries = new SimpleSchema
 
   startedAt:
     type: Date
-    autoValue: ->
-      new Date()
+    optional: true
 
   endedAt:
     type: Date
@@ -36,6 +40,7 @@ Schemas.Entries = new SimpleSchema
     type: String
     optional: true
     autoform:
+      label: "Winner"
       options: getUserOptions
 
   currentRoundNumber:
