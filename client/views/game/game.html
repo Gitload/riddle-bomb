@@ -13,7 +13,7 @@
                 <p>
                     {{invitedUser.profile.firstName}} {{invitedUser.profile.lastName}}
                 </p>
-                Points
+                0
             </div>
             <div class="col-xs-8">
                 <h2>{{currentQuestion.title}}</h2>
@@ -22,7 +22,7 @@
                 <p>
                     {{gameAdmin.profile.firstName}} {{gameAdmin.profile.lastName}}
                 </p>
-                Points
+                0
             </div>
         </div>
         <ul class="list-group">
@@ -31,7 +31,7 @@
                     <div class="row">
                         <div class="col-xs-2">
                             {{#if answered}}
-                                {{#if isInvitedUser answered.answeredByUserId}}
+                                {{#if isInvitedUser answeredByUser}}
                                     CHECK
                                 {{/if}}
                             {{/if}}
@@ -45,7 +45,7 @@
                         </div>
                         <div class="col-xs-2">
                             {{#if answered}}
-                                {{#if isGameAdmin answered.answeredByUserId}}
+                                {{#if isGameAdmin answeredByUser}}
                                     CHECK
                                 {{/if}}
                             {{/if}}

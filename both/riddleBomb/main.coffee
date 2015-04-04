@@ -25,7 +25,7 @@ mergeDrawsWithAnswers = (draws, answers, callback) ->
       for draw in draws
         if option == draw.userInput
           answerObj.answered = true
-          answerObj.answeredByUserId = draw.userId
+          answerObj.answeredByUser = Meteor.users.findOne(draw.userId)
 
     callback answerObj
 
@@ -163,3 +163,10 @@ mergeDrawsWithAnswers = (draws, answers, callback) ->
           roundNumber: game.currentRoundNumber
           userId: user._id
           userInput: answer
+    @nextDraw()
+
+  nextDraw: ->
+    game = @getCurrentGame()
+    Games.update game._id,
+      $set:
+        currentDrawNumber: game.currentDrawNumber + 1
