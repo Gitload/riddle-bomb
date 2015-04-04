@@ -121,8 +121,8 @@ mergeDrawsWithAnswers = (draws, answers, callback) ->
         startedAt: new Date()
 
   getCurrentQuestion: ->
-    currentDrawNumber = @getCurrentGame().currentDrawNumber
-    questionId = @getCurrentGame().questionIds[currentDrawNumber]
+    currentRoundNumber = @getCurrentGame().currentRoundNumber
+    questionId = @getCurrentGame().questionIds[currentRoundNumber]
     question = Questions.findOne(questionId)
     return question
 
