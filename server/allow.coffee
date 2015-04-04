@@ -14,6 +14,10 @@ Posts.allow
 	remove: (userId, doc) ->
 		userId == doc.owner
 
+Games.allow
+  insert: (userId, doc) ->
+    return true
+
 Attachments.allow
 	insert: (userId, doc) ->
 		true

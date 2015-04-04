@@ -1,9 +1,20 @@
-Template.game.helpers
-  game: ->
-    return RiddleBomb.getCurrentGame()
+Template.runningGame.helpers
+  currentQuestion: ->
+    RiddleBomb.getCurrentQuestion()
 
-  isInvitedUser: ->
-    return (RiddleBomb.getInvitedUserByGame()._id == Meteor.user()._id)
+  answers: ->
+    RiddleBomb.getAnswersWithStatus()
 
-  isPendingGame: ->
-    return RiddleBomb.isPendingGame()
+  hasTurn: ->
+    RiddleBomb.userHasTurn()
+
+
+Template.game.events
+  'click .accept-invitation' : ->
+    RiddleBomb.startGame @
+
+Template.runningGame.events
+  "submit .submit-answer": (event) ->
+    answer = event.target.answer.value
+    RiddleBomb.submitAnswer answer
+    return false

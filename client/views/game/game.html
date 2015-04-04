@@ -1,9 +1,74 @@
 <template name="game">
-    Game is running!
     {{#if isPendingGame}}
-        Spiel hat noch nicht begonnen.
-        {{#if isInvitedUser}}
-            <button class="accept-invitation btn btn-default">Einladung akzeptieren</button>
-        {{/if}}
+        {{> pendingGame}}
+    {{else}}
+        {{> runningGame}}
     {{/if}}
+</template>
+
+<template name="runningGame">
+    <div class="game-table">
+        <div class="row">
+            <div class="col-xs-2">
+                <p>
+                    {{invitedUser.profile.firstName}} {{invitedUser.profile.lastName}}
+                </p>
+                Points
+            </div>
+            <div class="col-xs-8">
+                <h2>{{currentQuestion.title}}</h2>
+            </div>
+            <div class="col-xs-2">
+                <p>
+                    {{gameAdmin.profile.firstName}} {{gameAdmin.profile.lastName}}
+                </p>
+                Points
+            </div>
+        </div>
+        <ul class="list-group">
+            {{#each answers}}
+                <li class="list-group-item {{#unless answered}}disabled{{/unless}}">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            {{#if answered}}
+                                {{#if isInvitedUser answered.answeredByUserId}}
+                                    CHECK
+                                {{/if}}
+                            {{/if}}
+                        </div>
+                        <div class="col-xs-8">
+                            {{#if answered}}
+                                {{title}}
+                            {{else}}
+                                ?
+                            {{/if}}
+                        </div>
+                        <div class="col-xs-2">
+                            {{#if answered}}
+                                {{#if isGameAdmin answered.answeredByUserId}}
+                                    CHECK
+                                {{/if}}
+                            {{/if}}
+                        </div>
+                    </div>
+                </li>
+            {{/each}}
+        </ul>
+        <div>
+            {{#if hasTurn}}
+                <form class="form-group submit-answer">
+                    <input name="answer" class="form-control" type="text" placeholder="Your next tip ..."/>
+                </form>
+            {{/if}}
+        </div>
+    </div>
+</template>
+
+<template name="pendingGame">
+    <p>This game hasn't started yet. {{gameAdmin.profile.firstName}} {{gameAdmin.profile.lastName}} is waiting for you.</p>
+    <p>
+        {{#if isInvitedUser}}
+        <button class="accept-invitation btn btn-default">Accept invitation</button>
+        {{/if}}
+    </p>
 </template>

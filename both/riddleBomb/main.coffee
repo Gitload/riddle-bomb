@@ -8,6 +8,27 @@ if Meteor.isClient
 getUserById  = (id) ->
   return Meteor.findOne id
 
+getDrawsByRoundNumber = (draws, roundNumber) ->
+  return _.map draws, (draw) ->
+    if(draw.roundNumber != roundNumber)
+      return false
+    return draw
+
+mergeDrawsWithAnswers = (draws, answers, callback) ->
+  for answerOptions in answers
+    answerObj =
+      answered: false
+
+    for option, index in answerOptions
+      if(index == 0)
+        answerObj.title = answerOptions[0]
+      for draw in draws
+        if option == draw.userInput
+          answerObj.answered = true
+          answerObj.answeredByUserId = draw.userId
+
+    callback answerObj
+
 @RiddleBomb =
 
   getUsersByFacebookFriends: () ->
@@ -83,9 +104,9 @@ getUserById  = (id) ->
   createNewGame: (options) ->
     users = [Meteor.user(), options.invitee];
     availableQuestions = @getAvailableQuestions users;
-    if(availableQuestions.count() < 2)
-      Alert.error "There are no available questions!"
-      return
+    #if(availableQuestions.count() < 2)
+      #Alert.error "There are no available questions!"
+      #return
 
     questionForGame = _.shuffle availableQuestions.fetch().slice 0,6
 
@@ -96,4 +117,49 @@ getUserById  = (id) ->
 
   startGame: (game) ->
     Games.update game._id,
-      startedAt: new Date()
+      $set:
+        startedAt: new Date()
+
+  getCurrentQuestion: ->
+    currentDrawNumber = @getCurrentGame().currentDrawNumber
+    questionId = @getCurrentGame().questionIds[currentDrawNumber]
+    question = Questions.findOne(questionId)
+    return question
+
+  userHasTurn: (user = Meteor.user()) ->
+    currentDrawNumber = @getCurrentGame().currentDrawNumber
+    isInvitedUser = @isInvitedUser(user)
+    isOddDrawNumber = currentDrawNumber % 2
+    if isOddDrawNumber
+      return (isInvitedUser)
+    else
+      return (!isInvitedUser)
+
+  isInvitedUser: (user = Meteor.user()) ->
+    (RiddleBomb.getInvitedUserByGame()._id == user._id)
+
+  isGameAdminUser: (user = Meteor.user()) ->
+    (RiddleBomb.getAdminUserByGame()._id == user._id)
+
+  getAnswersWithStatus: ->
+    game = @getCurrentGame()
+    currentQuestion = @getCurrentQuestion()
+    currentRoundNumber = game.currentRoundNumber
+    currentDrawNumber = game.currentDrawNumber
+    answersWithStatus = []
+    draws = getDrawsByRoundNumber game.draws, currentRoundNumber
+
+    mergeDrawsWithAnswers draws, currentQuestion.answers, (answerObj) ->
+      answersWithStatus.push answerObj
+
+    return answersWithStatus
+
+
+  submitAnswer: (answer, user = Meteor.user()) ->
+    game = @getCurrentGame()
+    Games.update game._id,
+      $push:
+        draws:
+          roundNumber: game.currentRoundNumber
+          userId: user._id
+          userInput: answer

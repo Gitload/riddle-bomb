@@ -6,10 +6,11 @@ Schemas.Entries = new SimpleSchema
     max: 60
 
   "answers":
-    type: [String]
+    type: Array
+    optional: true
 
   "answers.$":
-    type: String
+    type: [String]
     autoform:
       type: 'tags'
 
