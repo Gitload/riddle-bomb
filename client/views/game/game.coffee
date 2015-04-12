@@ -5,6 +5,9 @@ Template.runningGame.helpers
   answers: ->
     RiddleBomb.getAnswersWithStatus()
 
+  points: (user) ->
+    RiddleBomb.getPointsByUser(user)
+
   hasTurn: ->
     RiddleBomb.userHasTurn()
 

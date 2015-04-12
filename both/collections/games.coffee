@@ -46,7 +46,7 @@ Schemas.Entries = new SimpleSchema
   currentRoundNumber:
     type: Number
     autoValue: ->
-      0
+      @value || 0
 
   currentDrawNumber:
     type: Number

@@ -14,20 +14,38 @@ getDrawsByRoundNumber = (draws, roundNumber) ->
       return false
     return draw
 
-mergeDrawsWithAnswers = (draws, answers, callback) ->
+mergeAnswersWithDraws = (answers, draws, callback) ->
   for answerOptions in answers
     answerObj =
       answered: false
+      title: answerOptions[0]
 
-    for option, index in answerOptions
-      if(index == 0)
-        answerObj.title = answerOptions[0]
-      for draw in draws
-        if option == draw.userInput
-          answerObj.answered = true
-          answerObj.answeredByUser = Meteor.users.findOne(draw.userId)
+    for draw in draws
+      if inputFitsAnswer(draw.userInput, answerOptions)
+        answerObj.answered = true
+        answerObj.answeredByUser = Meteor.users.findOne(draw.userId)
 
     callback answerObj
+
+inputFitsAnswer = (input, answerOptions) ->
+  fits = false
+  for option in answerOptions
+    if option == input
+      fits = true
+  return fits
+
+mergeDrawsWithStatus = (draws, answers, callback) ->
+  inputs = []
+  for draw in draws
+    draw.correctAnswer = false
+    if inputs.indexOf(draw.userInput) > -1
+      draw.isDuplicate = true
+      continue
+    inputs.push draw.userInput
+    for answerOptions in answers
+      if inputFitsAnswer(draw.userInput, answerOptions)
+        draw.correctAnswer = true
+  return draws
 
 @RiddleBomb =
 
@@ -149,11 +167,24 @@ mergeDrawsWithAnswers = (draws, answers, callback) ->
     answersWithStatus = []
     draws = getDrawsByRoundNumber game.draws, currentRoundNumber
 
-    mergeDrawsWithAnswers draws, currentQuestion.answers, (answerObj) ->
+    mergeAnswersWithDraws currentQuestion.answers, draws, (answerObj) ->
       answersWithStatus.push answerObj
 
     return answersWithStatus
 
+  roundHasWinner: (roundNumber) ->
+    game = @getCurrentGame()
+    if (!roundNumber)
+      roundNumber = game.currentRoundNumber
+    currentQuestion = @getCurrentQuestion()
+    draws = getDrawsByRoundNumber game.draws, roundNumber
+    drawsWithStatus = mergeDrawsWithStatus draws, currentQuestion.answers
+    winner = false
+    _.map drawsWithStatus, (draw) ->
+      if !draw.correctAnswer
+        user = Meteor.users.find(draw.userId)
+        winner = if !RiddleBomb.isInvitedUser(user) then RiddleBomb.getInvitedUserByGame() else RiddleBomb.getAdminUserByGame()
+    return winner
 
   submitAnswer: (answer, user = Meteor.user()) ->
     game = @getCurrentGame()
@@ -165,8 +196,20 @@ mergeDrawsWithAnswers = (draws, answers, callback) ->
           userInput: answer
     @nextDraw()
 
+  getPointsByUser: (user = Meteor.user()) ->
+    game = @getCurrentGame()
+    currentRoundNumber = game.currentRoundNumber
+    points = 0
+    for roundNumber in [0..currentRoundNumber] by 1
+      winner = RiddleBomb.roundHasWinner(roundNumber)
+      if winner && winner._id == user._id
+        points++
+    return points
+
   nextDraw: ->
     game = @getCurrentGame()
+    currentRoundNumber = if RiddleBomb.roundHasWinner() then game.currentRoundNumber + 1 else game.currentRoundNumber
     Games.update game._id,
       $set:
+        currentRoundNumber: currentRoundNumber
         currentDrawNumber: game.currentDrawNumber + 1
