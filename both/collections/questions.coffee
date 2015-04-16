@@ -3,7 +3,6 @@
 Schemas.Entries = new SimpleSchema
   title:
     type:String
-    max: 60
 
   "answers":
     type: Array
