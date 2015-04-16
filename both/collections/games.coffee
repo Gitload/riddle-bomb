@@ -78,6 +78,10 @@ Schemas.Entries = new SimpleSchema
       label: "Winner"
       options: getUserOptions
 
+  "draws" :
+    type: [Object]
+    defaultValue: []
+
   "draws.$.roundNumber" :
     type: Number
 
@@ -103,10 +107,7 @@ Games.helpers
     return (roundNumber + 1 >= @.questionIds.length)
 
   getCurrentDrawNumber: ->
-    drawNumber = -1
-    for draw in @getCurrentDraws()
-      drawNumber++
-    return drawNumber + 1
+    @draws.length
 
   getQuestionByRoundNumber: (roundNumber = 0) ->
     questionId = @.questionIds[roundNumber]

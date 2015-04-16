@@ -17,10 +17,12 @@ getUserById  = (id) ->
     invitedUserIds = _.flatten _.map @getPendingGamesForAdmin().fetch(), (doc) ->
       doc.userIds
 
-    return collection.find
-      "services.facebook.id": {$in: facebookIds}
-      "_id" : {$nin: invitedUserIds}
-
+    return collection
+      .find
+        "services.facebook.id": {$in: facebookIds}
+        "_id" : {$nin: invitedUserIds}
+      .map (user) ->
+        return if RiddleBomb.userIsInRunningGame(user) then null else user
 
   getUsedQuestionIdsByUser: (user) ->
     games = Games.find
@@ -57,7 +59,10 @@ getUserById  = (id) ->
     Games.find
       userIds: user._id
       endedAt: null
-      #startedAt : {$not: null}
+      startedAt : {$not: null}
+
+  userIsInRunningGame: (user) ->
+    return (@getRunningGamesForUser(user).count() > 0)
 
   getCurrentGame : ->
     if Router.current().route.getName() != 'game'
