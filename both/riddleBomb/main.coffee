@@ -24,7 +24,8 @@ currentGame = false
         "services.facebook.id": {$in: facebookIds}
         "_id" : {$nin: invitedUserIds}
       .map (user) ->
-        return if RiddleBomb.userIsInRunningGame(user) then null else user
+        user.isInRunningGame = RiddleBomb.userIsInRunningGame(user)
+        return user
 
   getUsedQuestionIdsByUser: (user) ->
     games = Games.find

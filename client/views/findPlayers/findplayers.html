@@ -2,15 +2,15 @@
     <div class="container">
         {{> alert}}
     </div>
-	<div class="container">
+	<ul class="list-group">
 		{{#each facebookFriends}}
             {{> player}}
         {{/each}}
-	</div>
+	</ul>
 </template>
 
 <template name="player">
-    <a class="start-game">
+    <li class="list-group-item btn btn-default {{#if isInRunningGame }}disabled{{else}} start-game{{/if}}">
         {{profile.firstName}} {{profile.lastName}}
-    </a>
+    </li>
 </template>
