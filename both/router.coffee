@@ -56,7 +56,7 @@ Router.map ->
     path: AdminDashboard.path('export')
     controller: 'AdminController'
     onAfterAction: ->
-      Session.set 'admin_title', 'export'
+      Session.set 'admin_title', 'Import/Export Questions'
 
 Router.waitOn ->
   Meteor.subscribe 'user'
