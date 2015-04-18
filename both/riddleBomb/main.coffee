@@ -8,6 +8,8 @@ if Meteor.isClient
 getUserById  = (id) ->
   return Meteor.findOne id
 
+currentGame = false
+
 @RiddleBomb =
 
   getUsersByFacebookFriends: () ->
@@ -67,7 +69,16 @@ getUserById  = (id) ->
   getCurrentGame : ->
     if Router.current().route.getName() != 'game'
       return
-    return Router.current().data()
+    if !currentGame
+      gameId = Router.current().data().gameId
+      currentGame = new Game gameId,
+        onDrawAdded : (draw) ->
+          roundNumber = draw.roundNumber
+          roundWinner = RiddleBomb.getRoundWinner(roundNumber)
+          if(roundWinner)
+            Modals.showWinnerByRoundNumber(roundNumber)
+
+    return currentGame.fetch()[0]
 
   getAdminUserByGame: (game = @getCurrentGame()) ->
     Meteor.users.findOne game.adminUserId
@@ -99,7 +110,7 @@ getUserById  = (id) ->
       adminUserId: users[0]._id
       questionIds: (question._id for question in questionForGame)
 
-  startGame: (game) ->
+  startGame: (game = @getCurrentGame()) ->
     Games.update game._id,
       $set:
         startedAt: new Date()
@@ -125,7 +136,7 @@ getUserById  = (id) ->
   getAnswersWithStatus: ->
     @getCurrentGame().getAnswersWithStatus()
 
-  roundHasWinner: (roundNumber) ->
+  getRoundWinner: (roundNumber) ->
     finalDraw = @getCurrentGame().roundHasFinalDraw(roundNumber)
     if finalDraw
       user = Meteor.users.find(finalDraw.userId)
@@ -138,10 +149,11 @@ getUserById  = (id) ->
 
   submitAnswer: (answer, user = Meteor.user()) ->
     game = @getCurrentGame()
+    roundNumber = game.getCurrentRoundNumber()
     Games.update game._id,
       $push:
         draws:
-          roundNumber: game.getCurrentRoundNumber()
+          roundNumber: roundNumber
           userId: user._id
           userInput: answer
 
@@ -150,7 +162,7 @@ getUserById  = (id) ->
     currentRoundNumber = game.getCurrentRoundNumber()
     points = 0
     for roundNumber in [0..currentRoundNumber] by 1
-      winner = RiddleBomb.roundHasWinner(roundNumber)
+      winner = RiddleBomb.getRoundWinner(roundNumber)
       if winner && winner._id == user._id
         points++
     return points

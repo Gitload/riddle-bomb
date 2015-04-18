@@ -20,7 +20,6 @@ Template.registerHelper 'isGameAdmin', (user = Meteor.user()) ->
   RiddleBomb.isGameAdminUser(user)
 
 Template.registerHelper 'isInvitedUser', (user = Meteor.user()) ->
-    console.log user
     RiddleBomb.isInvitedUser(user)
 
 Template.registerHelper 'isPendingGame', ->

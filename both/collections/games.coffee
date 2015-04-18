@@ -34,7 +34,7 @@ mergeDrawsWithStatus = (draws, answers) ->
 inputFitsAnswer = (input, answerOptions) ->
   fits = false
   for option in answerOptions
-    if option == input
+    if option.toLowerCase() == input.toLowerCase()
       fits = true
   return fits
 

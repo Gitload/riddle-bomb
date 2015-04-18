@@ -14,7 +14,7 @@ Template.runningGame.helpers
 
 Template.game.events
   'click .accept-invitation' : ->
-    RiddleBomb.startGame @
+    RiddleBomb.startGame()
 
 Template.runningGame.events
   "submit .submit-answer": (event) ->

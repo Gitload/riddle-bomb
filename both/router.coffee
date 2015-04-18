@@ -47,8 +47,10 @@ Router.map ->
 
   @route "game/:_id",
     name: "game"
-    data: () ->
-      Games.findOne(this.params._id)
+    data:  ->
+      {
+        gameId : this.params._id
+      }
 
 Router.waitOn ->
   Meteor.subscribe 'user'
