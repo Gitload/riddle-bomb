@@ -122,9 +122,13 @@ Games.helpers
     finalDraw = false
     _.each drawsWithStatus, (draw) ->
       if !draw.correctAnswer
-        finalDraw = draw
+        finalDraw =
+          draw: draw
+          correct: false
     if(!finalDraw && drawsWithStatus.length == @.getQuestionByRoundNumber(roundNumber).answers.length)
-      finalDraw = _.last drawsWithStatus
+      finalDraw =
+        draw: _.last drawsWithStatus
+        correct: true
     return finalDraw
 
   getAnswersWithStatus: ->

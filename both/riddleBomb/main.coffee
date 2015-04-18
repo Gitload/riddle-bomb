@@ -139,8 +139,8 @@ currentGame = false
   getRoundWinner: (roundNumber) ->
     finalDraw = @getCurrentGame().roundHasFinalDraw(roundNumber)
     if finalDraw
-      user = Meteor.users.find(finalDraw.userId)
-      return @getOppositePlayer(user)
+      user = Meteor.users.findOne(finalDraw.draw.userId)
+      return if finalDraw.correct then user else @getOppositePlayer(user)
     else
       return false
 
