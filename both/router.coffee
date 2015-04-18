@@ -52,6 +52,12 @@ Router.map ->
         gameId : this.params._id
       }
 
+  @route "export",
+    path: AdminDashboard.path('export')
+    controller: 'AdminController'
+    onAfterAction: ->
+      Session.set 'admin_title', 'export'
+
 Router.waitOn ->
   Meteor.subscribe 'user'
   Meteor.subscribe 'userPicture'

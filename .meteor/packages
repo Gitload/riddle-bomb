@@ -48,3 +48,8 @@ reactive-var
 pahans:reactive-modal
 yogiben:alerts
 dburles:collection-helpers
+meteorhacks:npm
+
+
+npm-container
+pfafman:filesaver
