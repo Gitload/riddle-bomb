@@ -22,9 +22,10 @@ currentGame = false
     return collection
       .find
         "services.facebook.id": {$in: facebookIds}
-        "_id" : {$nin: invitedUserIds}
       .map (user) ->
+        user.isInvited = (invitedUserIds.indexOf(user._id) > -1)
         user.isInRunningGame = RiddleBomb.userIsInRunningGame(user)
+        console.log user
         return user
 
   getUsedQuestionIdsByUser: (user) ->

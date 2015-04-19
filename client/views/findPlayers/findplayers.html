@@ -10,7 +10,7 @@
 </template>
 
 <template name="player">
-    <li class="list-group-item btn btn-default {{#if isInRunningGame }}disabled{{else}} start-game{{/if}}">
+    <li class="list-group-item btn btn-default {{getIcon}} {{#if isDisabled }}disabled {{else}} start-game{{/if}}">
         {{profile.firstName}} {{profile.lastName}}
     </li>
 </template>

@@ -1,1 +1,2 @@
-@Schemas = {}
+if !@Schemas?
+  @Schemas = {}

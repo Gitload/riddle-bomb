@@ -8,6 +8,9 @@ Meteor.startup ->
         title: "You have been invited by #{adminUser.profile.firstName} #{adminUser.profile.lastName}"
         link: '/game/' + game._id
         icon: 'gamepad'
-        owner: invitedUser._id
+        owner: invitedUser._id,
+        data: {
+          gameId: game._id
+        }
 
 
