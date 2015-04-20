@@ -52,5 +52,4 @@ Template.registerHelper 'Notifications', (options) ->
 
 Template.registerHelper 'notificationCount', ->
   if typeof window['Notifications'] != 'undefined'
-    console.log _.extend getNotificationFilter(), {read: false}
     Notifications.find(_.extend getNotificationFilter(), {read: false}).count()

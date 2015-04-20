@@ -8,8 +8,8 @@ Template.runningGame.helpers
   points: (user) ->
     RiddleBomb.getPointsByUser(user)
 
-  hasTurn: ->
-    RiddleBomb.userHasTurn()
+  hasTurn: (user)->
+    RiddleBomb.userHasTurn(user)
 
 
 Template.game.events
