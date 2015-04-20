@@ -10,6 +10,9 @@ getUserById  = (id) ->
 
 currentGame = false
 
+config =
+  pointsToWin : 5
+
 @RiddleBomb =
 
   getUsersByFacebookFriends: () ->
@@ -101,11 +104,8 @@ currentGame = false
   createNewGame: (options) ->
     users = [Meteor.user(), options.invitee];
     availableQuestions = @getAvailableQuestions users;
-    #if(availableQuestions.count() < 2)
-      #Alert.error "There are no available questions!"
-      #return
 
-    questionForGame = _.shuffle availableQuestions.fetch().slice 0,6
+    questionForGame = _.shuffle availableQuestions.fetch().slice 0, config.pointsToWin * 2
 
     Games.insert
       userIds : (user._id for user in users)
@@ -116,6 +116,12 @@ currentGame = false
     Games.update game._id,
       $set:
         startedAt: new Date()
+
+  endGame: (game = @getCurrentGame()) ->
+    if !@gameHasEnded()
+      Games.update game._id,
+        $set:
+          endedAt: new Date()
 
   getCurrentQuestion: ->
     @getCurrentGame().getCurrentQuestion()
@@ -145,6 +151,23 @@ currentGame = false
       return if finalDraw.correct then user else @getOppositePlayer(user)
     else
       return false
+
+  getGameWinner: () ->
+    users = [@getInvitedUserByGame(), @getAdminUserByGame()]
+    winner = false
+    for user in users
+      if RiddleBomb.getPointsByUser() == config.pointsToWin
+        winner = user
+    if winner && !@gameHasEnded()
+      @endGame()
+
+    return winner
+
+  gameHasEnded: (game = @getCurrentGame()) ->
+    return (game.endedAt)
+
+  optionIsRegex: (input) ->
+    return (_.first(input) == '/' && _.last(input) == '/')
 
   getOppositePlayer: (user) ->
     return if !@.isInvitedUser(user) then @.getInvitedUserByGame() else @.getAdminUserByGame()

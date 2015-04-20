@@ -1,3 +1,11 @@
+Template.game.helpers
+  isEndedGame: ->
+    RiddleBomb.getGameWinner()
+
+Template.endedGame.helpers
+  winner: ->
+    RiddleBomb.getGameWinner()
+
 Template.runningGame.helpers
   currentQuestion: ->
     RiddleBomb.getCurrentQuestion()
