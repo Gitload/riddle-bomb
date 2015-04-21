@@ -11,8 +11,18 @@ refreshItems = (event) ->
 
 AutoForm.addInputType 'tags',
   template: 'autoformTagsRegex'
+  valueOut: (event) ->
+    console.log @
+    console.log event
+    @val()
+  valueConverters:
+    stringArray: (value) ->
+      value.split ','
 
 Template.autoformTagsRegex.helpers
+  autoformTagsTemplate: ->
+    return "autoformTags"
+
   hasInput: ->
     values = regexTestValues.get()
     return values[@name]?
@@ -25,6 +35,10 @@ Template.autoformTagsRegex.helpers
       return RiddleBombUtils.inputFitsAnswer(values[@name], answers)
     else
       return false
+
+  values: ->
+    values = answerOptions.get()
+    return values[@name]
 
 Template.autoformTags.events
   "itemAdded input": refreshItems

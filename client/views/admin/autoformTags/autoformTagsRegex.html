@@ -1,6 +1,7 @@
 <template name="autoformTagsRegex">
     {{> autoformTags}}
-    <input class="check-regex" type="text" data-schema-key="{{name}}"/>
+    <input class="check-regex" type="text"/>
+    <input class="js-input" type="hidden" value="{{values}}" data-schema-key="{{name}}"/>
     {{#if hasInput}}
         {{#if checkRegex}}
             <i class="fa fa-check-circle text-success"></i>
