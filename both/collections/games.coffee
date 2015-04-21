@@ -12,7 +12,7 @@ mergeAnswersWithDraws = (answers, draws, callback) ->
       title: answerOptions[0]
 
     for draw in draws
-      if inputFitsAnswer(draw.userInput, answerOptions)
+      if RiddleBombUtils.inputFitsAnswer(draw.userInput, answerOptions)
         answerObj.answered = true
         answerObj.answeredByUser = Meteor.users.findOne(draw.userId)
 
@@ -27,23 +27,9 @@ mergeDrawsWithStatus = (draws, answers) ->
       continue
     inputs.push draw.userInput
     for answerOptions in answers
-      if inputFitsAnswer(draw.userInput, answerOptions)
+      if RiddleBombUtils.inputFitsAnswer(draw.userInput, answerOptions)
         draw.correctAnswer = true
   return draws
-
-inputFitsAnswer = (input, answerOptions) ->
-  fits = false
-  for option in answerOptions
-    if option.toLowerCase() == input.toLowerCase()
-      fits = true
-    if RiddleBomb.optionIsRegex(option)
-      regex = new RegExp(option.replace(/\//g, ""), "i")
-      if input.match(regex)
-        fits = true
-
-  return fits
-
-
 
 Schemas.Entries = new SimpleSchema
 
