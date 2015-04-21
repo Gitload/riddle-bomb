@@ -1,0 +1,79 @@
+<template name="runningGame">
+    <div class="game-table">
+        <div class="row">
+            <div class="col-xs-6 col-sm-2">
+                <div class="panel {{#if hasTurn invitedUser }} panel-primary {{else}} panel-warning {{/if}}">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            {{invitedUser.profile.firstName}} {{invitedUser.profile.lastName}}
+                            <span class="badge">{{points invitedUser}}</span>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        {{#if hasTurn invitedUser}}
+                            PLAYING
+                        {{else}}
+                            WAITING
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-2 col-sm-push-8">
+                <div class="panel {{#if hasTurn gameAdmin }} panel-primary {{else}} panel-warning {{/if}}">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            {{gameAdmin.profile.firstName}} {{gameAdmin.profile.lastName}}
+                            <span class="badge">{{points gameAdmin}}</span>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        {{#if hasTurn gameAdmin}}
+                            PLAYING
+                        {{else}}
+                            WAITING
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8 col-sm-pull-2">
+                <h2>{{currentQuestion.title}}</h2>
+            </div>
+        </div>
+        <ul class="list-group">
+            {{#each answers}}
+            <li class="list-group-item {{#unless answered}}disabled{{/unless}}">
+                <div class="row">
+                    <div class="col-xs-2">
+                        {{#if answered}}
+                        {{#if isInvitedUser answeredByUser}}
+                        <i class="fa fa-check-circle"></i>
+                        {{/if}}
+                        {{/if}}
+                    </div>
+                    <div class="col-xs-8">
+                        {{#if answered}}
+                        {{title}}
+                        {{else}}
+                        <i class="fa fa-question-circle"></i>
+                        {{/if}}
+                    </div>
+                    <div class="col-xs-2">
+                        {{#if answered}}
+                        {{#if isGameAdmin answeredByUser}}
+                        <i class="fa fa-check-circle"></i>
+                        {{/if}}
+                        {{/if}}
+                    </div>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+        <div>
+            {{#if hasTurn}}
+            <form class="form-group submit-answer">
+                <input name="answer" class="form-control" type="text" placeholder="Your next tip ..."/>
+            </form>
+            {{/if}}
+        </div>
+    </div>
+</template>
