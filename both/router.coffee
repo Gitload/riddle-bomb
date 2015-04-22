@@ -86,9 +86,10 @@ saveRedirectUrl = ->
   @next()
 
 redirectToRunningGame = ->
-  runningGames = RiddleBomb.getRunningGamesForUser().fetch()
-  if runningGames[0] && @.route.getName().indexOf('admin') == -1
-      Router.go 'game', runningGames[0]
+  if Meteor.user()
+    runningGames = RiddleBomb.getRunningGamesForUser().fetch()
+    if runningGames[0] && @.route.getName().indexOf('admin') == -1
+        Router.go 'game', runningGames[0]
   @next()
 
 publicRoutes = _.union Config.publicRoutes, ['entrySignIn','entrySignUp','entryForgotPassword']

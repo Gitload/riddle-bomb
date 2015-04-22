@@ -23,7 +23,10 @@ Template.registerHelper 'isInvitedUser', (user = Meteor.user()) ->
     RiddleBomb.isInvitedUser(user)
 
 Template.registerHelper 'isPendingGame', ->
-    RiddleBomb.isPendingGame()
+  RiddleBomb.isPendingGame()
+
+Template.registerHelper 'hasRunningGame', ->
+  (RiddleBomb.getRunningGamesForUser())
 
 Template.registerHelper 'socialMedia', ->
 	_.map Config.socialMedia, (obj)->
