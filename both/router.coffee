@@ -3,14 +3,6 @@ Router.configure
   loadingTemplate: "loading"
   notFoundTemplate: "notFound"
   routeControllerNameConverter: "camelCase"
-  onBeforeAction: ->
-    if Config.username and Meteor.userId() and not Meteor.user().username
-      @redirect '/setUserName'
-    if Meteor.userId()
-      runningGames = RiddleBomb.getRunningGamesForUser()
-      #if runningGames.count() > 0
-        #Router.go 'game', runningGames.fetch()[0]
-    @next()
 
 Router.map ->
   @route "home",
@@ -93,9 +85,17 @@ saveRedirectUrl = ->
       Session.set 'redirectToAfterSignIn', @url
   @next()
 
+redirectToRunningGame = ->
+  runningGames = RiddleBomb.getRunningGamesForUser().fetch()
+  if runningGames[0] && @.route.getName().indexOf('admin') == -1
+      Router.go 'game', runningGames[0]
+  @next()
+
 publicRoutes = _.union Config.publicRoutes, ['entrySignIn','entrySignUp','entryForgotPassword']
+
 Router.onBeforeAction saveRedirectUrl, {except: _.union publicRoutes, ['entrySignOut']}
 Router.onBeforeAction signInRequired, {except: publicRoutes}
+Router.onBeforeAction redirectToRunningGame
 
 signInProhibited = ->
   if Meteor.user()
