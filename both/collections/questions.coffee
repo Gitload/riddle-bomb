@@ -6,10 +6,11 @@ Schemas.Entries = new SimpleSchema
 
   "answers":
     type: Array
-    optional: true
+    minCount: 2
 
   "answers.$":
     type: [String]
+    minCount: 1
     autoform:
       type: 'tags'
       afFieldInput:
