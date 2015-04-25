@@ -96,7 +96,8 @@ getSeconds = (game) ->
   getCurrentGame : ->
     if Router.current().route.getName() != 'game'
       return
-    if !currentGame
+    gameId = Router.current().data().gameId
+    if !currentGame || currentGame._id != gameId
       gameId = Router.current().data().gameId
       currentGame = new Game gameId
     return currentGame.fetch()[0]
@@ -112,8 +113,8 @@ getSeconds = (game) ->
   getAvailableQuestions: (users) ->
     usedQuestionsIds = _.flatten (@getUsedQuestionIdsByUser(user) for user in users)
 
-    availableQuestions = Questions.find
-      "_id" : {$nin: usedQuestionsIds}
+    availableQuestions = Questions.find()
+      ##"_id" : {$nin: usedQuestionsIds}
 
     return availableQuestions
 
@@ -178,10 +179,10 @@ getSeconds = (game) ->
     return winner
 
   gameHasStarted: (game = @getCurrentGame()) ->
-    return (game.startedAt)
+    return (game && game.startedAt)
 
   gameHasEnded: (game = @getCurrentGame()) ->
-    return (game.endedAt)
+    return (game && game.endedAt)
 
   optionIsRegex: (input) ->
     return (_.first(input) == '/' && _.last(input) == '/')
