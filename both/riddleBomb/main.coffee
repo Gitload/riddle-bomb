@@ -58,9 +58,16 @@ getSeconds = (game) ->
   getCurrentBreakTime: () ->
     game = @getCurrentGame()
     seconds = getSeconds(game)
-    return (if game.getCurrentDraws().length == 0 then config.timeForBreak - seconds else 0)
+    if game.getCurrentDraws().length == 0
+      return config.timeForBreak - seconds
+    else if seconds > config.timeForDraw
+      console.log 'display second difference'
+      return config.timeForBreak - seconds - config.timeForDraw
+    else
+      return 0
 
   isPendingGame: (game = @getCurrentGame()) ->
+
     return (!game.endedAt && !game.startedAt)
 
   getPendingGames: ->
