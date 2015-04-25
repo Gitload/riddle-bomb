@@ -13,11 +13,10 @@ trackerChecks = new ReactiveVar()
 
 config =
   pointsToWin : 5
-  timeForDraw: 30
+  timeForDraw: 15
   timeForBreak: 5
 
 getSeconds = (game) ->
-  console.log 'draws => ' + draws
   draws = game.draws
   startedAt = if draws.length == 0 then game.startedAt else draws[draws.length - 1].endedAt
   seconds = Math.round((RiddleBombTime.getTime() - startedAt.getTime()) / 1000)
@@ -235,7 +234,7 @@ getSeconds = (game) ->
 Tracker.autorun ->
   if trackerChecks.get()
     Tracker.autorun ->
-      if RiddleBomb.userIsInRunningGame() && RiddleBomb.getCurrentDrawTime() < 0
+      if RiddleBomb.userIsInRunningGame() && RiddleBomb.getCurrentDrawTime() < 1
         console.log 'submit'
         RiddleBomb.submitAnswer('')
 
