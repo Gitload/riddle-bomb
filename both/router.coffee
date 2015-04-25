@@ -40,7 +40,7 @@ Router.map ->
   @route "game/:_id",
     name: "game"
     onAfterAction: ->
-      RiddleBomb.activateTimeChecker()
+      RiddleBomb.activateTrackerChecks()
     data:  ->
       {
         gameId : this.params._id

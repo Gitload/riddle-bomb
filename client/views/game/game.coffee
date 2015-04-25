@@ -1,6 +1,6 @@
 Template.game.helpers
   isEndedGame: ->
-    RiddleBomb.getGameWinner()
+    RiddleBomb.gameHasEnded()
 
 Template.endedGame.helpers
   winner: ->

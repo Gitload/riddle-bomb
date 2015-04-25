@@ -9,7 +9,7 @@ getUserById  = (id) ->
   return Meteor.findOne id
 
 currentGame = false
-timeCheckerSet = new ReactiveVar()
+trackerChecks = new ReactiveVar()
 
 config =
   pointsToWin : 5
@@ -172,12 +172,13 @@ getSeconds = (game) ->
     users = [@getInvitedUserByGame(), @getAdminUserByGame()]
     winner = false
     for user in users
-      if RiddleBomb.getPointsByUser(user) == config.pointsToWin
+      if RiddleBomb.getPointsByUser(user) >= config.pointsToWin
         winner = user
-    if winner && !@gameHasEnded()
-      @endGame()
 
     return winner
+
+  gameHasStarted: (game = @getCurrentGame()) ->
+    return (game.startedAt)
 
   gameHasEnded: (game = @getCurrentGame()) ->
     return (game.endedAt)
@@ -208,8 +209,8 @@ getSeconds = (game) ->
         points++
     return points
 
-  activateTimeChecker: ->
-    timeCheckerSet.set(true)
+  activateTrackerChecks: ->
+    trackerChecks.set(true)
 
   resetGame: ->
     game = @getCurrentGame()
@@ -224,8 +225,12 @@ getSeconds = (game) ->
 
 
 Tracker.autorun ->
-  if timeCheckerSet.get()
+  if trackerChecks.get()
     Tracker.autorun ->
       if RiddleBomb.userIsInRunningGame() && RiddleBomb.getCurrentDrawTime() < 0
         console.log 'submit'
         RiddleBomb.submitAnswer('')
+
+    Tracker.autorun ->
+      if RiddleBomb.gameHasStarted() && RiddleBomb.getGameWinner() && !RiddleBomb.gameHasEnded()
+        RiddleBomb.endGame()
