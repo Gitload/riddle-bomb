@@ -91,7 +91,7 @@ getSeconds = (game) ->
       startedAt : {$not: null}
 
   userIsInRunningGame: (user) ->
-    return (@getRunningGamesForUser(user).count() > 0)
+    return (@getRunningGamesForUser(user) && @getRunningGamesForUser(user).count() > 0)
 
   getCurrentGame : ->
     if Router.current().route.getName() != 'game'
