@@ -17,9 +17,11 @@ config =
   timeForBreak: 5
 
 getSeconds = (game) ->
+  console.log 'draws => ' + draws.length
   draws = game.draws
   startedAt = if draws.length == 0 then game.startedAt else draws[draws.length - 1].endedAt
   seconds = Math.round((RiddleBombTime.getTime() - startedAt.getTime()) / 1000)
+  console.log 'seconds => ' + seconds
   return seconds
 
 @RiddleBomb =
@@ -60,11 +62,8 @@ getSeconds = (game) ->
     game = @getCurrentGame()
     seconds = getSeconds(game)
     if game.getCurrentDraws().length == 0
-      console.log (config.timeForBreak - seconds)
       return config.timeForBreak - seconds
     else
-      console.log game.getCurrentDraws()
-      console.log '0'
       return 0
 
   isPendingGame: (game = @getCurrentGame()) ->
