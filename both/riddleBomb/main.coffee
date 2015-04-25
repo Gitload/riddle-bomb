@@ -122,7 +122,7 @@ getSeconds = (game) ->
     users = [Meteor.user(), options.invitee];
     availableQuestions = @getAvailableQuestions users;
 
-    questionForGame = _.shuffle availableQuestions.fetch().slice 0, config.pointsToWin * 2
+    questionForGame = _.shuffle(availableQuestions.fetch()).slice 0, config.pointsToWin * 2
 
     Games.insert
       userIds : (user._id for user in users)
