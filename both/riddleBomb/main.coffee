@@ -57,13 +57,13 @@ getSeconds = (game) ->
     return (config.timeForDraw + breakSeconds - seconds)
 
   getCurrentBreakTime: () ->
-    console.log 'get current break time'
     game = @getCurrentGame()
     seconds = getSeconds(game)
     if game.getCurrentDraws().length == 0
       console.log (config.timeForBreak - seconds)
       return config.timeForBreak - seconds
     else
+      console.log game.getCurrentDraws()
       console.log '0'
       return 0
 
