@@ -50,19 +50,21 @@ getSeconds = (game) ->
     return _.flatten questionsIds
 
   getCurrentDrawTime: () ->
+    console.log 'get current draw time'
     game = @getCurrentGame()
     seconds = getSeconds game
     breakSeconds = if game.getCurrentDraws().length == 0 then config.timeForBreak else 0
     return (config.timeForDraw + breakSeconds - seconds)
 
   getCurrentBreakTime: () ->
+    console.log 'get current break time'
     game = @getCurrentGame()
     seconds = getSeconds(game)
     if game.getCurrentDraws().length == 0
+      console.log (config.timeForBreak - seconds)
       return config.timeForBreak - seconds
     else
-      console.log 'draws = ' + game.getCurrentDraws()
-      console.log seconds
+      console.log '0'
       return 0
 
   isPendingGame: (game = @getCurrentGame()) ->
