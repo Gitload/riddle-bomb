@@ -60,10 +60,9 @@ getSeconds = (game) ->
     seconds = getSeconds(game)
     if game.getCurrentDraws().length == 0
       return config.timeForBreak - seconds
-    else if seconds > config.timeForDraw
-      console.log 'display second difference'
-      return config.timeForBreak - seconds - config.timeForDraw
     else
+      console.log 'draws = ' + game.getCurrentDraws()
+      console.log seconds
       return 0
 
   isPendingGame: (game = @getCurrentGame()) ->
