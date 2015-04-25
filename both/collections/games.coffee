@@ -73,14 +73,24 @@ Schemas.Entries = new SimpleSchema
     type: [Object]
     defaultValue: []
 
+
+  "draws.$.endedAt" :
+    type: Date
+    autoValue: ->
+      new Date()
+
   "draws.$.roundNumber" :
     type: Number
 
   "draws.$.userId":
     type: String
+    autoform:
+      label: "User"
+      options: getUserOptions
 
   "draws.$.userInput":
     type: String
+    optional: true
 
 Games.helpers
   getCurrentRoundNumber: ->

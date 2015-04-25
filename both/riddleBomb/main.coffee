@@ -9,9 +9,18 @@ getUserById  = (id) ->
   return Meteor.findOne id
 
 currentGame = false
+timeCheckerSet = new ReactiveVar()
 
 config =
   pointsToWin : 5
+  timeForDraw: 30
+  timeForBreak: 5
+
+getSeconds = (game) ->
+  draws = game.draws
+  startedAt = if draws.length == 0 then game.startedAt else draws[draws.length - 1].endedAt
+  seconds = Math.round((RiddleBombTime.getTime() - startedAt.getTime()) / 1000)
+  return seconds
 
 @RiddleBomb =
 
@@ -40,6 +49,17 @@ config =
 
     return _.flatten questionsIds
 
+  getCurrentDrawTime: () ->
+    game = @getCurrentGame()
+    seconds = getSeconds game
+    breakSeconds = if game.getCurrentDraws().length == 0 then config.timeForBreak else 0
+    return (config.timeForDraw + breakSeconds - seconds)
+
+  getCurrentBreakTime: () ->
+    game = @getCurrentGame()
+    seconds = getSeconds(game)
+    return (if game.getCurrentDraws().length == 0 then config.timeForBreak - seconds else 0)
+
   isPendingGame: (game = @getCurrentGame()) ->
     return (!game.endedAt && !game.startedAt)
 
@@ -63,6 +83,8 @@ config =
       adminUserId: {$not: user._id}
 
   getRunningGamesForUser : (user = Meteor.user()) ->
+    if(!user)
+      return
     Games.find
       userIds: user._id
       endedAt: null
@@ -76,13 +98,7 @@ config =
       return
     if !currentGame
       gameId = Router.current().data().gameId
-      currentGame = new Game gameId,
-        onDrawAdded : (draw) ->
-          roundNumber = draw.roundNumber
-          roundWinner = RiddleBomb.getRoundWinner(roundNumber)
-          if(roundWinner)
-            Modals.showWinnerByRoundNumber(roundNumber)
-
+      currentGame = new Game gameId
     return currentGame.fetch()[0]
 
   getAdminUserByGame: (game = @getCurrentGame()) ->
@@ -156,7 +172,7 @@ config =
     users = [@getInvitedUserByGame(), @getAdminUserByGame()]
     winner = false
     for user in users
-      if RiddleBomb.getPointsByUser() == config.pointsToWin
+      if RiddleBomb.getPointsByUser(user) == config.pointsToWin
         winner = user
     if winner && !@gameHasEnded()
       @endGame()
@@ -191,3 +207,25 @@ config =
       if winner && winner._id == user._id
         points++
     return points
+
+  activateTimeChecker: ->
+    timeCheckerSet.set(true)
+
+  resetGame: ->
+    game = @getCurrentGame()
+    Games.update game._id,
+      $set:
+        draws: []
+        endedAt: null
+        startedAt: new Date()
+
+  getConfig: ->
+    config
+
+
+Tracker.autorun ->
+  if timeCheckerSet.get()
+    Tracker.autorun ->
+      if RiddleBomb.userIsInRunningGame() && RiddleBomb.getCurrentDrawTime() < 0
+        console.log 'submit'
+        RiddleBomb.submitAnswer('')

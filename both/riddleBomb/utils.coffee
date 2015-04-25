@@ -1,5 +1,7 @@
 @RiddleBombUtils =
   inputFitsAnswer : (input, answerOptions) ->
+    if !input
+      return false
     fits = false
     for option in answerOptions
       if option.toLowerCase() == input.toLowerCase()

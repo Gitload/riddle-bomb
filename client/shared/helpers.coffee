@@ -16,6 +16,9 @@ Template.registerHelper 'invitedUser', ->
 Template.registerHelper 'gameAdmin', ->
     RiddleBomb.getAdminUserByGame()
 
+Template.registerHelper 'hasTurn', (user) ->
+    RiddleBomb.userHasTurn(user)
+
 Template.registerHelper 'isGameAdmin', (user = Meteor.user()) ->
   RiddleBomb.isGameAdminUser(user)
 
@@ -26,7 +29,7 @@ Template.registerHelper 'isPendingGame', ->
   RiddleBomb.isPendingGame()
 
 Template.registerHelper 'hasRunningGame', ->
-  (RiddleBomb.getRunningGamesForUser())
+  RiddleBomb.userIsInRunningGame()
 
 Template.registerHelper 'socialMedia', ->
 	_.map Config.socialMedia, (obj)->

@@ -1,5 +1,5 @@
 ##Receipe from https://github.com/themeteorchef/exporting-data-from-your-meteor-application/blob/master/code/client/controllers/authenticated/export.coffee
-Template.export.events(
+Template.adminExport.events(
 
   'click .export-data': ->
     # Get the current user's ID.

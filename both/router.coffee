@@ -39,12 +39,14 @@ Router.map ->
 
   @route "game/:_id",
     name: "game"
+    onAfterAction: ->
+      RiddleBomb.activateTimeChecker()
     data:  ->
       {
         gameId : this.params._id
       }
 
-  @route "export",
+  @route "admin/export",
     path: AdminDashboard.path('export')
     controller: 'AdminController'
     onAfterAction: ->

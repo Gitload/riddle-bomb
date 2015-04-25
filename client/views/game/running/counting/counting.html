@@ -1,0 +1,8 @@
+<template name="counting">
+    {{#if roundWinner}}
+        <h2>{{roundWinner.profile.firstName}} has won this round!</h2>
+        <h3>Next round will start in {{breakTime}}</h3>
+    {{else}}
+        <h3>Game will start in {{breakTime}}</h3>
+    {{/if}}
+</template>
