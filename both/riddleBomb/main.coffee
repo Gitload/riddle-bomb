@@ -13,13 +13,14 @@ trackerChecks = new ReactiveVar()
 
 config =
   pointsToWin : 5
-  timeForDraw: 30
+  timeForDraw: 15
   timeForBreak: 5
 
 getSeconds = (game) ->
   draws = game.draws
   startedAt = if draws.length == 0 then game.startedAt else draws[draws.length - 1].endedAt
   seconds = Math.round((RiddleBombTime.getTime() - startedAt.getTime()) / 1000)
+  console.log 'seconds => ' + seconds
   return seconds
 
 @RiddleBomb =
@@ -32,13 +33,12 @@ getSeconds = (game) ->
       doc.userIds
 
     return collection
-      .find
+    .find
         "services.facebook.id": {$in: facebookIds}
-      .map (user) ->
-        user.isInvited = (invitedUserIds.indexOf(user._id) > -1)
-        user.isInRunningGame = RiddleBomb.userIsInRunningGame(user)
-        console.log user
-        return user
+    .map (user) ->
+      user.isInvited = (invitedUserIds.indexOf(user._id) > -1)
+      user.isInRunningGame = RiddleBomb.userIsInRunningGame(user)
+      return user
 
   getUsedQuestionIdsByUser: (user) ->
     games = Games.find
@@ -58,9 +58,13 @@ getSeconds = (game) ->
   getCurrentBreakTime: () ->
     game = @getCurrentGame()
     seconds = getSeconds(game)
-    return (if game.getCurrentDraws().length == 0 then config.timeForBreak - seconds else 0)
+    if game.getCurrentDraws().length == 0
+      return config.timeForBreak - seconds
+    else
+      return 0
 
   isPendingGame: (game = @getCurrentGame()) ->
+
     return (!game.endedAt && !game.startedAt)
 
   getPendingGames: ->
@@ -114,7 +118,7 @@ getSeconds = (game) ->
     usedQuestionsIds = _.flatten (@getUsedQuestionIdsByUser(user) for user in users)
 
     availableQuestions = Questions.find()
-      ##"_id" : {$nin: usedQuestionsIds}
+    ##"_id" : {$nin: usedQuestionsIds}
 
     return availableQuestions
 
@@ -228,7 +232,7 @@ getSeconds = (game) ->
 Tracker.autorun ->
   if trackerChecks.get()
     Tracker.autorun ->
-      if RiddleBomb.userIsInRunningGame() && RiddleBomb.getCurrentDrawTime() < 0
+      if RiddleBomb.userIsInRunningGame() && RiddleBomb.userHasTurn() && RiddleBomb.getCurrentDrawTime() < 1
         console.log 'submit'
         RiddleBomb.submitAnswer('')
 
