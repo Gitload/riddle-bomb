@@ -1,6 +1,29 @@
+@import "/client/style/bootstrap-variables.less";
+
 .game-table {
   text-align:center;
   &.paused {
     opacity:0
   }
+  .title {
+    h2 {
+      @media(max-width: @screen-sm-max) {
+        font-size:@font-size-h1 * 0.7;
+      }
+      @media(max-width: @screen-xs-max) {
+        font-size:@font-size-h1 * 0.5;
+      }
+    }
+    h3 {
+      color:grey;
+      margin-top:0;
+      @media(max-width: @screen-sm-max) {
+        font-size:@font-size-h3 * 0.7;
+      }
+      @media(max-width: @screen-xs-max) {
+        font-size:@font-size-h3 * 0.5;
+      }
+    }
+  }
+
 }
