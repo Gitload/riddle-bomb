@@ -5,6 +5,10 @@
     Games: {
       color: 'blue'
       icon: 'gamepad'
+      tableColumns: [
+        {label: 'Id',name:'_id'},
+        {label: 'Started', name: 'startedAt'}
+      ]
     }
 
     Questions: {
