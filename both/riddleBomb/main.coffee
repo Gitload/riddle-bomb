@@ -20,7 +20,6 @@ getSeconds = (game) ->
   draws = game.draws
   startedAt = if draws.length == 0 then game.startedAt else draws[draws.length - 1].endedAt
   seconds = Math.round((RiddleBombTime.getTime() - startedAt.getTime()) / 1000)
-  console.log 'seconds => ' + seconds
   return seconds
 
 @RiddleBomb =
@@ -233,7 +232,6 @@ Tracker.autorun ->
   if trackerChecks.get()
     Tracker.autorun ->
       if RiddleBomb.userIsInRunningGame() && RiddleBomb.userHasTurn() && RiddleBomb.getCurrentDrawTime() < 1
-        console.log 'submit'
         RiddleBomb.submitAnswer('')
 
     Tracker.autorun ->
