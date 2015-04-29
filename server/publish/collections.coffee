@@ -9,3 +9,6 @@ Meteor.publish 'games', ->
 
 Meteor.publish 'attachments', ->
 	Attachments.find()
+
+Meteor.publish 'options', ->
+  Options.find()

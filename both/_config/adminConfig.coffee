@@ -6,6 +6,7 @@
       color: 'blue'
       icon: 'gamepad'
     }
+
     Questions: {
       color: 'red'
       icon: 'question'
@@ -13,11 +14,18 @@
         {label: 'Title',name:'title'}
       ]
     }
+
+    Options: {
+      color: 'green'
+      icon: 'file-o'
+      tableColumns: [
+        {label: 'Key',name:'key'}
+      ]
+    }
+
   dashboard:
     homeUrl: '/dashboard'
   autoForm:
     omitFields: ['createdAt', 'updatedAt']
 
 AdminDashboard.addSidebarItem 'Export', AdminDashboard.path('/export'), icon: 'plus'
-
-

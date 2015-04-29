@@ -11,10 +11,6 @@ getUserById  = (id) ->
 currentGame = false
 trackerChecks = new ReactiveVar()
 
-config =
-  pointsToWin : 5
-  timeForDraw: 150000
-  timeForBreak: 5
 
 getSeconds = (game) ->
   draws = game.draws
@@ -51,14 +47,14 @@ getSeconds = (game) ->
   getCurrentDrawTime: () ->
     game = @getCurrentGame()
     seconds = getSeconds game
-    breakSeconds = if game.getCurrentDraws().length == 0 then config.timeForBreak else 0
-    return (config.timeForDraw + breakSeconds - seconds)
+    breakSeconds = if game.getCurrentDraws().length == 0 then @getConfig("timeForBreak") else 0
+    return (@getConfig("timeForDraw") + breakSeconds - seconds)
 
   getCurrentBreakTime: () ->
     game = @getCurrentGame()
     seconds = getSeconds(game)
     if game.getCurrentDraws().length == 0
-      return config.timeForBreak - seconds
+      return @getConfig("timeForBreak") - seconds
     else
       return 0
 
@@ -125,7 +121,7 @@ getSeconds = (game) ->
     users = [Meteor.user(), options.invitee];
     availableQuestions = @getAvailableQuestions users;
 
-    questionForGame = _.shuffle(availableQuestions.fetch()).slice 0, config.pointsToWin * 2
+    questionForGame = _.shuffle(availableQuestions.fetch()).slice 0, @getConfig("pointsToWin") * 2
 
     Games.insert
       userIds : (user._id for user in users)
@@ -176,7 +172,7 @@ getSeconds = (game) ->
     users = [@getInvitedUserByGame(), @getAdminUserByGame()]
     winner = false
     for user in users
-      if RiddleBomb.getPointsByUser(user) >= config.pointsToWin
+      if RiddleBomb.getPointsByUser(user) >= @getConfig("pointsToWin")
         winner = user
 
     return winner
@@ -224,8 +220,14 @@ getSeconds = (game) ->
         endedAt: null
         startedAt: new Date()
 
-  getConfig: ->
-    config
+  getConfig: (key) ->
+    if !key
+      Options.find().fetch()
+    else
+      configFromCollection = Options.findOne({key:key})
+      if configFromCollection then configFromCollection.getValue() else Config.defaultOptions[key]
+
+
 
 
 Tracker.autorun ->

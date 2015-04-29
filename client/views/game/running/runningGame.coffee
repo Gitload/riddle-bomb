@@ -7,7 +7,7 @@ Template.runningGame.helpers
 
   drawTime: () ->
     seconds = RiddleBomb.getCurrentDrawTime()
-    max = RiddleBomb.getConfig().timeForDraw
+    max = RiddleBomb.getConfig("timeForDraw")
     percent = Math.round 100 / max * seconds
     state = switch
       when percent > 70 then 'success'

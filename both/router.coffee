@@ -57,6 +57,7 @@ Router.waitOn ->
   Meteor.subscribe 'userPicture'
   Meteor.subscribe 'questions'
   Meteor.subscribe 'games'
+  Meteor.subscribe 'options'
 
 
 prepareView = ->
