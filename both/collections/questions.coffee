@@ -4,6 +4,10 @@ Schemas.Entries = new SimpleSchema
   title:
     type:String
 
+  subtitle:
+    type:String
+    optional: true
+
   "answers":
     type: Array
     minCount: 2

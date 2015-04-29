@@ -13,7 +13,7 @@ trackerChecks = new ReactiveVar()
 
 config =
   pointsToWin : 5
-  timeForDraw: 15
+  timeForDraw: 150000
   timeForBreak: 5
 
 getSeconds = (game) ->

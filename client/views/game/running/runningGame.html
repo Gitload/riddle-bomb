@@ -35,11 +35,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-8 col-sm-pull-2">
+            <div class="title col-sm-8 col-sm-pull-2">
                 {{#if isPaused}}
                     {{> counting}}
                 {{else}}
                     <h2>{{currentQuestion.title}}</h2>
+                    {{#if currentQuestion.subtitle}}
+                        <h3>{{currentQuestion.subtitle}}</h3>
+                    {{/if}}
                     <div class="progress">
                         <div class="progress-bar progress-bar-{{drawTime.state}}"
                              role="progressbar"
