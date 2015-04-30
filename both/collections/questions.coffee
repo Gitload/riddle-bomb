@@ -15,6 +15,15 @@ Schemas.Entries = new SimpleSchema
   "answers.$":
     type: [String]
     minCount: 1
+    custom: ->
+      error = false
+      for value in @value
+        try
+          RiddleBombUtils.inputFitsAnswer('debug', [value])
+        catch err
+          error = 'answer'
+      return error
+
     autoform:
       type: 'tags'
       afFieldInput:

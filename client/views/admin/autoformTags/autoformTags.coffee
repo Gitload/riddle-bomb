@@ -12,8 +12,6 @@ refreshItems = (event) ->
 AutoForm.addInputType 'tags',
   template: 'autoformTagsRegex'
   valueOut: (event) ->
-    console.log @
-    console.log event
     @val()
   valueConverters:
     stringArray: (value) ->
