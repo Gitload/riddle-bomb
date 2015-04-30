@@ -28,6 +28,7 @@ mergeDrawsWithStatus = (draws, answers) ->
     inputs.push draw.userInput
     for answerOptions in answers
       if RiddleBombUtils.inputFitsAnswer(draw.userInput, answerOptions)
+        draw.usedAnswer = _.first answerOptions
         draw.correctAnswer = true
   return draws
 
@@ -117,6 +118,10 @@ Games.helpers
 
   getCurrentQuestion: ->
     roundNumber = @getQuestionByRoundNumber(@getCurrentRoundNumber())
+
+  getLastDraw: (roundNumber = @getCurrentRoundNumber())->
+    drawsWithStatus = mergeDrawsWithStatus @getDrawsByRoundNumber(roundNumber), @getQuestionByRoundNumber(roundNumber).answers
+    _.last drawsWithStatus
 
   roundHasFinalDraw: (roundNumber = @getCurrentRoundNumber())->
     drawsWithStatus = mergeDrawsWithStatus @getDrawsByRoundNumber(roundNumber), @getQuestionByRoundNumber(roundNumber).answers

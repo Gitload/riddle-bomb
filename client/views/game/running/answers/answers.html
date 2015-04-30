@@ -6,9 +6,11 @@
         </form>
         {{/if}}
     </div>
-    <ul class="list-group">
+    <ul class="list-group" id="answers">
+        {{lastAnswer.title}}
         {{#each answers}}
-        <li class="list-group-item {{#unless answered}}disabled{{/unless}}">
+        <li class="list-group-item {{#if answered}} checked animated rubberBand {{else }} disabled{{/if}}"
+            data-title="{{title}}">
             <div class="row">
                 <div class="col-xs-2">
                     {{#if answered}}
@@ -17,11 +19,11 @@
                     {{/if}}
                     {{/if}}
                 </div>
-                <div class="col-xs-8">
+                <div class="col-xs-8 answer">
                     {{#if answered}}
-                    {{title}}
+                        {{title}}
                     {{else}}
-                    <i class="fa fa-question-circle"></i>
+                        <i class="fa fa-question-circle"></i>
                     {{/if}}
                 </div>
                 <div class="col-xs-2">

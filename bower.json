@@ -1,0 +1,25 @@
+{
+  "name": "riddle-bomb",
+  "version": "0.0.1",
+  "homepage": "https://github.com/mellors/riddle-bomb",
+  "authors": [
+    "Marcel Mellor <info@mellors.de>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "overrides": {
+    "jquery": {
+      "main": []
+    }
+  },
+  "dependencies": {
+    "jquery-smooth-scroll": "~1.5.5",
+    "animate.css": "~3.2.6"
+  }
+}

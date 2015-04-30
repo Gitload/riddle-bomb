@@ -1,4 +1,6 @@
 .meteor/local
 .meteor/meteorite
-.idea/*
-server/local/*
+.idea
+server/local
+bower_components
+.bower_components

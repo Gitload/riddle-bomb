@@ -59,7 +59,6 @@ getSeconds = (game) ->
       return 0
 
   isPendingGame: (game = @getCurrentGame()) ->
-
     return (!game.endedAt && !game.startedAt)
 
   getPendingGames: ->

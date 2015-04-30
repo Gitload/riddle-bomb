@@ -54,3 +54,5 @@ meteorhacks:npm
 npm-container
 pfafman:filesaver
 remcoder:chronos
+gadicohen:reactive-window
+mquandalle:bower
