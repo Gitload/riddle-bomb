@@ -1,6 +1,10 @@
+initializing = true
 Meteor.startup ->
   RiddleBomb.getPendingGames().observe
     added: (game) ->
+      if initializing
+        return
+
       adminUser = RiddleBomb.getAdminUserByGame game
       invitedUser = RiddleBomb.getInvitedUserByGame game
 
@@ -12,5 +16,6 @@ Meteor.startup ->
         data: {
           gameId: game._id
         }
+  initializing = false
 
 
