@@ -1,19 +1,10 @@
-jsZip      = Meteor.npmRequire 'jszip'
+jsZip = Meteor.npmRequire 'jszip'
+global = @
 
 Meteor.methods(
-  exportData: (userId) ->
-    # Check the format of the userId. Check allows us to assert that arguments
-    # to a function have the right types and structure to preven unwanted data
-    # being inserted into the DB.
-    # See: https://docs.meteor.com/#/full/check_package
-    # See: https://docs.meteor.com/#/full/auditargumentchecks
+  exportData: (userId, collectionName) ->
     check(userId,String)
-
-    # Setup our zip instance and define folders for each type of data.
-    # Note: folders are optional but nice for organization. Here, we're only
-    # making one folder to demonstrate the technique.
     zip           = new jsZip()
-
-    zip.file('questions.json', JSON.stringify(Questions.find().fetch(), null, 2))
+    zip.file("#{collectionName}.json", JSON.stringify(global[collectionName].find().fetch(), null, 2))
     zip.generate({type: "base64"})
 )

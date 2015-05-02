@@ -31,5 +31,3 @@
     homeUrl: '/dashboard'
   autoForm:
     omitFields: ['createdAt', 'updatedAt']
-
-AdminDashboard.addSidebarItem 'Export', AdminDashboard.path('/export'), icon: 'plus'

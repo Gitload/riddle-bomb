@@ -1,12 +1,35 @@
 <template name="adminExport">
     {{> adminAlert}}
-    <h3>Export</h3>
-    <p>Export Question File</p>
-    <button class="export-data btn btn-success">Export Data</button>
+    <div class="container">
+        <h3>Export</h3>
+        <form id="export" role="form">
+            <div class="form-group">
+                <label for="export-collections" class="control-label">Collections</label>
+                <select id="export-collections">
+                    {{#each collections}}
+                    <option>{{this}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <button type="submit" class="export-data btn btn-success">Export Data</button>
+        </form>
+    </div>
 
-    <h3>Import</h3>
-    <p>Import Question File</p>
-    <form>
-        <input type="file" class="myFileInput">
-    </form>
+    <div class="container">
+        <h3>Import</h3>
+        <form id="import" role="form">
+            <div class="form-group">
+                <label for="import-collections" class="control-label">Collections</label>
+                <select id="import-collections">
+                    {{#each collections}}
+                    <option>{{this}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <input id="import_file" type="file" class="myFileInput">
+            <button type="submit" class="import-data btn btn-success">Import Data</button>
+        </form>
+    </div>
+
+
 </template>
