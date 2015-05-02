@@ -52,4 +52,4 @@ Template.adminExport.events(
       fileField.value = null
 )
 
-AdminDashboard.addSidebarItem 'Export', AdminDashboard.path('/export'), icon: 'plus'
+AdminDashboard.addSidebarItem 'Export', AdminDashboard.path('utils/export'), icon: 'plus'

@@ -46,8 +46,8 @@ Router.map ->
         gameId : this.params._id
       }
 
-  @route "admin/export",
-    path: AdminDashboard.path('export')
+  @route "adminExport",
+    path: AdminDashboard.path('utils/export')
     controller: 'AdminController'
     onAfterAction: ->
       Session.set 'admin_title', 'Import/Export Questions'
