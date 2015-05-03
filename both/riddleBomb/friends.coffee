@@ -1,5 +1,5 @@
 if Meteor.isClient
-  facebookFriends = new ReactiveVar(new Meteor.Collection(null))
+  facebookFriends = new ReactiveVar(new Meteor.Collection(null).find {})
 
   Meteor.startup ->
     Tracker.autorun ->
