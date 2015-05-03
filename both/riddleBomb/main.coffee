@@ -1,10 +1,3 @@
-facebookFriends = new ReactiveVar()
-
-if Meteor.isClient
-  if Meteor.userId()
-    Meteor.subscribe 'user', () ->
-      facebookFriends.set FacebookCollections.getFriends('me').find {}
-
 getUserById  = (id) ->
   return Meteor.findOne id
 
@@ -21,7 +14,7 @@ getSeconds = (game) ->
 @RiddleBomb =
 
   getUsersByFacebookFriends: () ->
-    facebookIds = _.map facebookFriends.get().fetch(), (doc) ->
+    facebookIds = _.map RiddleBombFriends.getFacebookFriends().fetch(), (doc) ->
       doc.id
     collection = Meteor.users
     invitedUserIds = _.flatten _.map @getPendingGamesForAdmin().fetch(), (doc) ->
