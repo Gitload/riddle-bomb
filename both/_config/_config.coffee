@@ -1,6 +1,6 @@
 @Config =
-  name: 'My App'
-  title: 'Make Meteor Apps. Fast.'
+  name: 'RiddleBomb'
+  title: 'Who knows more?'
   subtitle: 'A boilerplate from MeteorFactory.io'
   logo: ->
     '<b>' + @name + '</b>'
