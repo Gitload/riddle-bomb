@@ -29,3 +29,7 @@ Template.runningGame.events
     answer = event.target.answer.value
     RiddleBomb.submitAnswer answer
     return false
+
+  "blur input#answer": (event, template) ->
+    if Modernizr.touch && event.target.value
+      template.$('.submit-answer').submit()
