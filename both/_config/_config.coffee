@@ -15,17 +15,8 @@
   dashboardRoute: '/dashboard'
   socialMedia:
     facebook:
-      url: 'http://facebook.com/benjaminpeterjones'
+      url: 'http://facebook.com/riddlebomb'
       icon: 'facebook'
-    twitter:
-      url: 'http://twitter.com/BenPeterJones'
-      icon: 'twitter'
-    github:
-      url: 'http://github.com/yogiben'
-      icon: 'github'
-    info:
-      url: 'http://meteorfactory.io'
-      icon: 'link'
   publicRoutes: ['home']
   defaultOptions:
     pointsToWin: 5

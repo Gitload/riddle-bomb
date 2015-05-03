@@ -37,8 +37,6 @@ multiply:iron-router-progress
 manuelschoebel:ms-seo
 spiderable
 accounts-facebook
-accounts-google
-accounts-twitter
 bootstrap
 accounts-ui
 jparker:gravatar
@@ -49,8 +47,6 @@ pahans:reactive-modal
 yogiben:alerts
 dburles:collection-helpers
 meteorhacks:npm
-
-
 npm-container
 pfafman:filesaver
 remcoder:chronos

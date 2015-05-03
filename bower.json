@@ -16,10 +16,15 @@
   "overrides": {
     "jquery": {
       "main": []
+    },
+    "modernizr": {
+      "main": ["modernizr.js"],
+      "arch": [ "client" ]
     }
   },
   "dependencies": {
     "jquery-smooth-scroll": "~1.5.5",
-    "animate.css": "~3.2.6"
+    "animate.css": "~3.2.6",
+    "modernizr": "~2.8.3"
   }
 }
