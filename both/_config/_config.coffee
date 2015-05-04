@@ -15,7 +15,7 @@
   dashboardRoute: '/dashboard'
   socialMedia:
     facebook:
-      url: 'http://facebook.com/riddlebomb'
+      url: 'http://facebook.com/'
       icon: 'facebook'
   publicRoutes: ['home']
   defaultOptions:
