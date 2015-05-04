@@ -27,8 +27,9 @@ Template.runningGame.helpers
 Template.runningGame.events
   "submit .submit-answer": (event) ->
     answer = event.target.answer.value
-    RiddleBomb.submitAnswer answer
-    return false
+    if RiddleBomb.userHasTurn()
+      RiddleBomb.submitAnswer answer
+    event.preventDefault()
 
   "blur input#answer": (event, template) ->
     if Modernizr.touch && event.target.value
